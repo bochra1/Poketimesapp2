@@ -1,5 +1,6 @@
 import {React, Component} from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 class Home extends Component{ 
    render() {
     console.log(this.props)
@@ -9,8 +10,11 @@ class Home extends Component{
         return (
           <div className="post card" key={post.id}>
             <div className="card-content">
+            <Link to={'/' + post.id}>
               <span className="card-title">{post.title}</span>
+              </Link>
               <p>{post.body}</p>
+           
             </div>
           </div>
         )
@@ -31,4 +35,5 @@ class Home extends Component{
 const mapStateToProps = (state, ownProps) => {
   return { posts: state.posts}
 }
+
 export default connect(mapStateToProps) (Home) ;
